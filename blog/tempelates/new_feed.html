@@ -1,0 +1,25 @@
+new_feed.html
+
+<!--This template accepts forms from the user and saves them-->
+{% extends 'news/base.html' %}
+<!-- Takes the code from base.html(to prevent redundant coding) and then has its own individual function-->
+{% block content %}
+<!--This allows us to add things from elsewhere
+                          and allow the inherited template to make changes to the base template-->
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+    <!--Div defines this part of the code as the container--->
+<form method="post">
+  <!--To accept the form in the form of a POST http request-->
+  {% csrf_token %}
+  <!-- To ensure security-->
+{{ form.as_p }}
+<!--accepts the value as a paragraph-->
+<hr>
+<!--Draw a horizontal line-->
+<button type="submit" class="btn btn-primary">Save</button>
+
+<!--Form to accept the URL from the user-->
+</form>
+{% endblock %}

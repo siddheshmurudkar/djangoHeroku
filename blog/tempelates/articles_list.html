@@ -1,0 +1,54 @@
+articles_list.html
+
+<!--This template handles the displaying of all the articles-->
+{% extends 'news/base.html' %}
+
+{% block content %}
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+    <h1>Django News</h1>
+    <p>Have a look around to see some of the latest and greatest news articles from your favorite feeds.</p>
+  </div>
+</div>
+
+<div class="container">
+  <style>
+p {
+  border-style: hidden;
+}
+</style>
+<!--Used to assist in neat display-->
+<form method="post">
+  <!--To accept the form in the form of a POST http request-->
+  {% csrf_token %}
+  <!-- To ensure security-->
+{{ category_form.as_p }}
+<!--accepts the value as a paragraph-->
+<hr>
+<!--Draw a horizontal line-->
+</form>
+
+{% for row in rows %}
+  <!--Runs for loop in the rows array to access articles in twos-->
+    <div class="col-md-6">
+    <!--Used to display articles two in a row-->
+      {% for entry in row %}
+    <!--Runs for loop in the row array to access articles one by one-->
+        <h2>{{entry.title}}</h2>
+        <p>{{entry.description | safe}}</p>
+           <!--Reassures HTML that it can use some other HTML souce-->
+        <p><a href="{{entry.url}}" target="_blank" class="btn btn-primary">View Details</a></p><p></p>
+          <!--Creates a link to redirect the user to another page to view the article in detail-->
+      {% endfor %}
+    <hr>
+    </div>
+{% endfor %}
+
+<!-- Creates a footer -->
+  <footer>
+    <p>&copy; 2018 Django News Aggregator</p>
+  </footer>
+</div> <!-- /container -->
+{% endblock %}
