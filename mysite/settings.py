@@ -25,7 +25,7 @@ SECRET_KEY = '6c7!6te)z52%j-c*19rjo2=py09vwimuy+z+*ma3hhax4guvvz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['0.0.0.0','localhost','pure-shelf-91946.herokuapp.com']
 
 
 # Application definition
